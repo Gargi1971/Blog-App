@@ -1,0 +1,61 @@
+body{
+  color: #333;
+}
+img{
+  width: 220px;
+}
+main{
+  padding: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+header{
+  display: flex;
+  justify-content: space-between; 
+  margin-bottom: 15px;
+  align-items: center;
+  margin-top: 20pxS;
+}
+header a{
+  text-decoration: none;
+  color: inherit;
+  
+}
+header a.logo{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+header nav{
+  display: flex;
+  gap: 15px;
+}
+
+div.post {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  /* gap: 10px; */
+  margin-bottom: 30px;
+}
+
+div.post div.texts h2{
+  margin-bottom: 0.3rem;
+  font-size: 1.8rem;
+
+}
+div.post p.info{
+  margin-top: 0px;
+  color: #888;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+div.post p.info a.author{
+  color: #333; 
+}
+div.post p.summary{
+  margin: 10px 0;
+  line-height: 1.4rem;
+}
+
