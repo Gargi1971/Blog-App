@@ -3,14 +3,14 @@ import {useState} from "react";
 export default function LoginPage(){
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    async function register(ev){
+        async function register(ev){
         ev.preventDefault();
-        const resposne = await fetch('http://localhost:4000/register',{
+        const response = await fetch('http://localhost:4000/register',{
             method: 'POST',
             body: JSON.stringify({username,password}),
             headers: {'Content-Type': 'application/json'},
-        })
-        if (resposne.status ===200) {
+        });
+        if (response.status === 200) {
             alert('registration successful');
         } else {
             alert('registration failed');
