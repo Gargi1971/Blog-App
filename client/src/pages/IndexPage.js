@@ -1,4 +1,4 @@
-import Post from "../Components/post";
+import Post from "../post";
 
 export default function IndexPage(){
     return(
