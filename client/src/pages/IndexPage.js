@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Post from "../post";
 
 export default function IndexPage(){
+    const [post, setPosts] = useState([]);
     useEffect(() => {
-        fetch('/post').then(response => {
+        fetch('http://localhost:4000/post').then(response => {
             response.json().then(posts => {
                 console.log(posts);
             });
@@ -11,10 +12,10 @@ export default function IndexPage(){
     }, []);
 
     return(
-        <div>
-        <Post/>
-        <Post/>
-        <Post/>
-        </div>
+        <>
+        {posts.length > 0 && posts.map(post => (
+            <Post{...post}/>
+        ))}
+        </>
     );
 }
