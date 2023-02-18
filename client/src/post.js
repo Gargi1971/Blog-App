@@ -10,7 +10,7 @@ export default function Post({title, summary, cover, content, createdAt}){
           <a class="author">Gargi Singh</a>
           <time>{createdAt}</time>
         </p>
-        <p class="summary">{summary}</p></div>
+        <p class="summary">{summary}</p></div> 
       </div>
     );
 
