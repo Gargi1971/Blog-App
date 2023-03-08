@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 
 
-mongoose.connect('mongodb+srv://gargi:12345@cluster0.zktjd3n.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://gargi:12345@cluster0.gszfnuv.mongodb.net/?retryWrites=true&w=majority')
 
 app.post('/register', async (req,res) => {
     const {username,password} = req.body;

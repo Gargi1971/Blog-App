@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { Navigate } from "react-router-dom";
+
 export default function CreatePost(){
     
     const [title, setTitle] = useState('');
@@ -40,9 +41,9 @@ export default function CreatePost(){
             setRedirect(true);
         }
       }
-      if(redirect){
-        return <Navigate to={'/'}/>
-      }
+    //   if(redirect){
+    //     return <Navigate to={'/'}/>
+    //   }
 
     
 
