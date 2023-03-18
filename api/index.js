@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 
 
-mongoose.connect('mongodb+srv://gargi:12345@cluster0.gszfnuv.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://gargi:12345@cluster0.k77kblx.mongodb.net/?retryWrites=true&w=majority')
 
 app.post('/register', async (req,res) => {
     const {username,password} = req.body;
@@ -86,10 +86,9 @@ app.post('/post', uploadMiddleware.single('file'), async(req, res) =>{
   res.json(postDoc);
 });
 
-// app.get('/post', async (req, res) => {
-//   const posts = await Post.find();
-//   res.json(posts);
-// })
+app.get('/post', async (req, res) => {
+  res.json(await Post.find());
+})
 
 app.listen(4000);
 

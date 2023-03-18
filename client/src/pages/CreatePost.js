@@ -32,14 +32,15 @@ export default function CreatePost(){
         data.set('summary', summary);
         data.set('content', content);
         data.set('file', files[0]);
-        ev.preventDefault();
+        ev.preventDefault(files);
+        
         const response = fetch('http://localhost:4000/post', {
             method: 'POST',
             body: data,
         });
-        if(response.ok){
-            setRedirect(true);
-        }
+        // if(response.ok){
+        //     setRedirect(true);
+        // }
       }
     //   if(redirect){
     //     return <Navigate to={'/'}/>
@@ -70,3 +71,4 @@ export default function CreatePost(){
         </form>
     );
 }
+
