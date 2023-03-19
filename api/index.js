@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 
 
-mongoose.connect('mongodb+srv://gargi:12345@cluster0.k77kblx.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://gargi:12345@cluster0.0rwnegj.mongodb.net/?retryWrites=true&w=majority')
 
 app.post('/register', async (req,res) => {
     const {username,password} = req.body;
@@ -68,7 +68,12 @@ app.post('/logout', (req,res) => {
     res.cookie('token', '').json('ok');
   });
 
-app.post('/post', uploadMiddleware.single('file'), async(req, res) =>{
+
+// app.get('/post', async (req, res) => {
+//   res.json(await Post.find());
+// })
+
+app.post('/post', uploadMiddleware.single('file'), (req, res) => {
   const {originalname,path} = req.file;
   const parts = originalname.split('.');
   const ext = parts[parts.length-1];
@@ -76,19 +81,17 @@ app.post('/post', uploadMiddleware.single('file'), async(req, res) =>{
   fs.renameSync(path, newPath);
 
   const{title, summary, content} = req.body;
-  const postDoc = await Post.create({
-    title,
-    summary,
-    content,
-    cover:newPath,
+  const postDoc = Post.create({
+     title,
+     summary,
+     content,
+     cover:newPath,
+    
+     });
 
-  })
   res.json(postDoc);
 });
 
-app.get('/post', async (req, res) => {
-  res.json(await Post.find());
-})
 
 app.listen(4000);
 
