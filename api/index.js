@@ -69,9 +69,6 @@ app.post('/logout', (req,res) => {
   });
 
 
-// app.get('/post', async (req, res) => {
-//   res.json(await Post.find());
-// })
 
 app.post('/post', uploadMiddleware.single('file'), (req, res) => {
   const {originalname,path} = req.file;
@@ -80,17 +77,25 @@ app.post('/post', uploadMiddleware.single('file'), (req, res) => {
   const newPath = path+'.'+ext;
   fs.renameSync(path, newPath);
 
-  const{title, summary, content} = req.body;
-  const postDoc = Post.create({
-     title,
-     summary,
-     content,
-     cover:newPath,
-    
-     });
-
-  res.json(postDoc);
+  const{token} = req.cookies;
+  jwt.verify(token, secret, {}, (err, info) => {
+    if(err) throw err;
+    const{title, summary, content} = req.body;
+    const postDoc = Post.create({
+       title,
+       summary,
+       content,
+       cover:newPath,
+       author: info.id,
+      
+       });
+    res.json(postDoc);
 });
+});
+
+app.get('/post', async (req, res) => {
+   res.json(await Post.find());
+ });
 
 
 app.listen(4000);
